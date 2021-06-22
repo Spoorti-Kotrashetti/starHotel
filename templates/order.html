@@ -1,0 +1,183 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap' %}" rel="stylesheet">
+
+    <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js' %}" charset="utf-8"></script>
+
+    <title>Your Orders</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/owl.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+
+    <style>
+        img{
+            height:80px; 
+            width:80px;
+        }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/"><h2>Restaurant <em>Website</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+                </li> 
+
+                {%if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="menu">Menu</a></li>
+                <li class="nav-item "><a class="nav-link" href="cart">Cart</a></li>
+                <li class="nav-item active"><a class="nav-link" href="#">Orders</a></li>
+                {% endif %}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="aboutus">About Us</a>
+                      <a class="dropdown-item" href="chefs">Chefs</a>
+                      <a class="dropdown-item" href="contactus">Contact us</a>
+                    </div>
+                </li>
+                
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{user.username}}</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="custLogout">Logout</a>
+                        <!-- <a class="dropdown-item" href="accounts/Cust">As Customer</a> -->
+                      </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign in</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/admin">As Chef</a>
+                        <a class="dropdown-item" href="/accounts/custLogin">As Customer</a>
+                      </div>
+                    </li>
+                {%endif%}
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    
+<div class="send-message">
+    {% load cart %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Send us a Message</h2>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="contact-form">
+
+            <div class="border rounded p-4 m-4">
+                <p class="display-4">ORDERS..</p>
+                <hr>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sno.</th>
+                            <th>Images</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for ord in orders %}
+                        <tr>
+                            <td >{{forloop.counter}}</td>
+                            <td><img src="{{ord.product.food_img.url}}"  class="rounded-circle" alt="..."></td>
+                            <td>{{ord.product.food_name}}</td>
+                            <td>{{ord.order_date}}</td>
+                            <td>{{ord.price}}</td>
+                            <td>{{ord.quantity}}</td>
+                            <td>{{ord.quantity|multiply:ord.price}}</td>
+                            <!-- <td>{{ord.status|default:'pending..'}}</td> -->
+                            {% if ord.status %}
+                            <td><small class="badge badge-success">Completed</small></td>
+                            {% else %}
+                            <td><small class="badge badge-warning">Pending</small></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+
+                    
+                    
+                </table>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+ <!-- Additional Scripts -->
+ <script src="{% static 'js/custom.js' %}"></script>
+ <script src="{% static 'js/owl.js' %}"></script>
+
+
+
+</body>
+
+</html>

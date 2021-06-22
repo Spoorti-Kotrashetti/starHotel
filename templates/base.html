@@ -1,0 +1,139 @@
+{% load static %}
+{% static "images" as baseURL %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap' %}" rel="stylesheet">
+
+    <title>Hotel STAR Website</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+
+    <style>
+      .card-textPrice,.card-title,.banner-item-01,.banner-item-02,.banner-item-03{
+        color: rgb(112, 3, 39);
+        text-align: end;
+        text-shadow: 0px;
+
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/"><h2>Restaurant <em>Website</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+                </li> 
+
+                <!-- <li class="nav-item"><a class="nav-link" href="book-table.html">Book A Table</a></li> -->
+
+
+                {%if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="hotel/menu">Menu</a></li>
+                {% endif %}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="hotel/aboutus">About Us</a>
+                      <!-- <a class="dropdown-item" href="blog.html">Blog</a> -->
+                      <a class="dropdown-item" href="hotel/chefs">Chefs</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item"><a class="nav-link" href="hotel/contactus">Contact Us</a></li>
+
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{user.username}}</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="accounts/custLogout">Logout</a>
+                        <!-- <a class="dropdown-item" href="accounts/Cust">As Customer</a> -->
+                      </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign in</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="admin">As Chef</a>
+                        <a class="dropdown-item" href="accounts/custLogin">As Customer</a>
+                      </div>
+                    </li>
+                {%endif%}
+                
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+    
+    <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="inner-content">
+                <p>Copyright © 2021 GSSSIETW - Template by: <a href="{% static 'http://geethashishu.in/' %}">geethashishu.in</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+  
+  
+      <!-- Bootstrap core JavaScript -->
+      <script src="{% static 'jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  
+  
+      <!-- Additional Scripts -->
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script src="{% static 'js/owl.js' %}"></script>
+    </body>
+  </html>
+        
+    

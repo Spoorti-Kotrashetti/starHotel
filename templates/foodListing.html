@@ -1,0 +1,259 @@
+{% load static %}
+{% static "images" as baseURL %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap' %}" rel="stylesheet">
+
+    <title>Hotel Menu</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+
+    <style>
+      img {
+        height: 150px;
+        width: 80px;
+      }
+      .card-textPrice,.card-title{
+        color: rgb(112, 3, 39);
+        text-align: end;
+        text-shadow: 0px;
+
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/"><h2>Restaurant <em>Website</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+                </li> 
+
+                <!-- <li class="nav-item"><a class="nav-link" href="book-table.html">Book A Table</a></li> -->
+
+
+                {%if user.is_authenticated %}
+                <li class="nav-item active"><a class="nav-link" href="menu">Menu</a></li>
+                <li class="nav-item "><a class="nav-link" href="cart">Cart</a></li>
+                <li class="nav-item "><a class="nav-link" href="order">Orders</a></li>
+                {% endif %}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="aboutus">About Us</a>
+                      <a class="dropdown-item" href="chefs">Chefs</a>
+                      <a class="dropdown-item" href="contactus">Contact Us</a>
+                    </div>
+                </li>
+                
+
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{user.username}}</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="custLogout">Logout</a>
+                        <!-- <a class="dropdown-item" href="accounts/Cust">As Customer</a> -->
+                      </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign in</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="admin">As Chef</a>
+                        <a class="dropdown-item" href="accounts/custLogin">As Customer</a>
+                      </div>
+                    </li>
+                {%endif%}
+                
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <!-- Page Content -->
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <!-- <h4>Lorem ipsum dolor sit amet</h4> -->
+              
+              <h2>LISTING...</h2>
+              
+              <!-- <h2>FOOD LISTING</h2> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    {% load cart%}
+    <div class="products">
+      <div class="container">
+        <div class="row mx-auto">
+
+          <!-- {% for fd in foodList %}
+          
+          <div class="col-md-4">
+            <div class="product-item">
+              <a href="#"><img src="{{fd.food_img.url}}" alt=""></a>
+              <div class="down-content">
+                <a href="#"><h4>{{fd.food_name}}</h4></a>
+                <h6>DESCRIPTION =</h6> {{fd.food_desc}}
+                <h6>PRICE = </h6>{{fd.food_price}}
+              </div>
+            </div>
+          </div>
+          
+          {% endfor %} -->
+
+
+          {% for fd in foodList %}
+
+          <div class="card mx-auto mb-3" id="{{fd.id}}" style="width: 18rem;">
+                <img  src="{{fd.food_img.url}}"  class="card-img-top" alt="...">
+
+                <div class="card-body">                  
+                    <h5 class="card-title">{{fd.food_name}}</h5>
+                    <p class="card-text"> {{fd.food_desc}}</p>
+                    <br>
+                    <div>
+                        <p class='card-textPrice' style="font-size: medium;">Rs. {{fd.food_price}}</p>
+                    
+                        <!-- <a href="#" class="btn btn-secondary btn-sm">Add to cart</a> -->
+                       
+                    </div>                 
+                </div>
+
+                
+                <div class="card-footer p-0  no-gutters">
+                  {%  if fd|is_in_cart:request.session.cart %}
+                  <div class='row no-gutters'>
+                    <form action="foodListing?category={{fd.food_category_id}}#{{fd.id}}" class="col-2" method="POST">
+                      {% csrf_token %}
+                      <input hidden type="text" name="fd" value='{{fd.id}}'>
+                      <input hidden type="text" name="remove" value='True'>
+                      <input type="submit" value="-" class=" btn btn-block btn-secondary">
+                    </form>
+                    <div class="text-center col">{{fd|cart_quantity:request.session.cart}} in cart</div>
+                    <form action="foodListing?category={{fd.food_category_id}}#{{fd.id}}" class="col-2" method="POST">
+                        {% csrf_token %}
+                        <input hidden type="text" name="fd" value='{{fd.id}}'>
+                        <input type="submit" value="+" class=" btn btn-block btn-secondary">
+                    </form>
+                    
+                  </div>
+                  {% else %}
+                  <form action="foodListing?category={{fd.food_category_id}}#{{fd.id}}" class="btn-block" method="POST">
+                    {% csrf_token %}
+                    <input hidden type="text" name="fd" value='{{fd.id}}'>
+                    <input type="submit" class="float-right btn btn-secondary border form-control" value="Add to cart">
+                  </form>
+                  {% endif %}
+                </div>
+          </div>
+          
+          {% endfor %}
+
+
+
+
+
+
+          <!-- <div class="col-md-4">
+            <div class="product-item">
+              <a href="#"><img src="assets/images/salad.jpg" alt=""></a>
+              <div class="down-content">
+                <a href="#"><h4>Salad</h4></a>
+                <P>DESCRIPTION.......</P>
+                <P>PRICE......</P>  
+              </div>
+            </div>
+          </div> -->
+
+
+
+
+          <!-- <div class="col-md-12">
+            <ul class="pages">
+              <li><a href="#">1</a></li>
+              <li class="active"><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <p>Copyright © 2021 GSSSIETW - Template by: <a href="http://geethashishu.in/">geethashishu.in</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/owl.js' %}"></script>
+  </body>
+
+</html>

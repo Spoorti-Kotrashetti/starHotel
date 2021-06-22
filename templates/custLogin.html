@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap' %}" rel="stylesheet">
+
+    <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js' %}" charset="utf-8"></script>
+
+    <title>Customer Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/owl.css' %}">
+
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/"><h2>Restaurant <em>Website</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+                </li> 
+
+                <!-- <li class="nav-item"><a class="nav-link" href="book-table.html">Book A Table</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li> -->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/aboutus">About Us</a>
+                      <!-- <a class="dropdown-item" href="blog.html">Blog</a> -->
+                      <a class="dropdown-item" href="/chefs">Chefs</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item "><a class="nav-link" href="/contactus">Contact Us</a></li>
+
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign in</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/admin">As Chef</a>
+                      <!-- <a class="dropdown-item" href="custRegister">As Customer</a> -->
+                    </div>
+                </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+
+
+
+<div class="send-message">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Send us a Message</h2>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="contact-form">
+
+            <!-- Customer Signin form starts -->
+            <form id="cust-signin" action="custLogin" method="post">
+              {% csrf_token %}
+                
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+
+                    <div>
+                        {% for msg in messages %}
+                        <h3>{{msg}}</h3>
+                        {% endfor %}
+                      </div>
+
+                  <fieldset>
+                    <input name="username" type="text" class="form-control" id="name" placeholder="Customer Name" required="">
+                  </fieldset>
+                </div>
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12">
+                  <fieldset>
+                    <input name="cust_mail" type="email" class="form-control" id="email" placeholder="E-Mail Address" required="">
+                  </fieldset>
+                </div> -->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <fieldset>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" required="">
+                  </fieldset>
+                </div>
+            </div>
+
+                <div class="col-lg-12 options-01" >
+                    <span class="password">Forgot <a href="/accounts/reset_password">password?</a></span>
+                </div>
+
+                <br><br>
+            <div class="row">
+                <div class="col-lg-12">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="filled-button">Login</button>
+                  </fieldset>
+                </div>
+
+                <div class="col-lg-12 options-02">
+                    <span class="toggle-acc">Not Registered? <a href="custRegister">Create an Account</a></span>
+					<!-- <p>Not Registered? <a href="#">Create an Account</a></p> -->
+				</div>
+
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+ <!-- Additional Scripts -->
+ <script src="{% static 'js/custom.js' %}"></script>
+ <script src="{% static 'js/owl.js' %}"></script>
+
+ <!-- Signin and signup toggle -->
+ <!-- <script type="text/javascript">
+    $('.options-02 a').click(function(){
+        $('form').animate({
+            height: "toggle", opacity: "toggle"
+        }, "slow");
+    });
+</script> -->
+
+</body>
+
+</html>
