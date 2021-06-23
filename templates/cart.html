@@ -158,7 +158,12 @@
                 <hr>
                 <div class="m-3 p-3">
                     <!-- <a href="#" class = "btn btn-outline-info border rounded col-lg-3 float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">Check out</a> -->
-                    <a href="paymentRazor" class = "btn btn-outline-info border rounded col-lg-3 float-right" >Check out</a>
+                    <!-- <a href="paymentRazor" class = "btn btn-outline-info border rounded col-lg-3 float-right" >Check out</a> -->
+                    <form action="/checkout" method="POST">
+                      {% csrf_token %}
+                      <br>
+                      <input  class="btn btn-outline-info border rounded col-lg-3 float-right" type="submit" value = "Check out">
+                    </form>
                 </div>
             </div>
           </div>
