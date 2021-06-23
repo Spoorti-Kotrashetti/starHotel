@@ -61,8 +61,8 @@ def custRegister(request):
             # custVar2 = cust(cust_name=cust_name, cust_mail=cust_mail,cust_password=cust_password)
             # custVar2.save();
             print("Customer regestered successfully!")
-            messages.info(request,'Customer regestered successfully!')
-        return redirect('custRegister')
+            messages.info(request,'Regestered successfully!...Please Login')
+        return redirect('custLogin')
 
     else:
         return render(request, 'custRegister.html')
