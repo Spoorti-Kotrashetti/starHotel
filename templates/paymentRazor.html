@@ -106,7 +106,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Total Payable Amount: <b>{{foods|total_cart_price:request.session.cart}}/-</b>
+              <!-- <h2>Total Payable Amount: <b>{{foods|total_cart_price:request.session.cart}}/-</b> -->
               <!-- <h2>Total Payable Amount: <b>{% widthratio final_price 1 100 %}/-</b> -->
               <form action="/checkout" method="POST">
                 {% csrf_token %}
