@@ -27,10 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ua(#$#1l97w-s&r4-pginr)2tffv#k1xa26jekdg11vk6(bdk%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 # Application definition
 
@@ -158,6 +159,7 @@ EMAIL_USE_TLS = True
 # PAYMENT GATEWAY SETTINGS
 razorpay_id = "rzp_test_JKbTLdt7oaEovn"
 razorpay_account_id = "0JLIrpnmFyfhPw4oUps4vZWa"
+
 
 
 django_heroku.settings(locals())
