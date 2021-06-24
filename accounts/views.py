@@ -1,5 +1,5 @@
 from accounts.models import cust
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
@@ -15,7 +15,14 @@ from .models import cust
 def custLogin(request):
     if request.method=="POST":
         cust_name = request.POST['username']
-        customer = User.objects.get(username=cust_name)
+        # customer = User.objects.get(username=cust_name)
+        # customer = get_object_or_404(User, username=cust_name)
+
+        try:
+            customer = User.objects.get(username=cust_name)
+        except User.DoesNotExist:
+            messages.info(request,'User Does Not Exist...Please Register :)')
+            return redirect('custRegister')
         
         # cust_mail = request.POST['cust_mail']
         cust_password = request.POST['password']
@@ -32,7 +39,7 @@ def custLogin(request):
 
         else:
             print(cust_name)
-            messages.info(request,'invalid credentials')
+            messages.info(request,'Invalid credentials...Please try again :(')
             return redirect('custLogin')
     else:
         return render(request, 'custLogin.html')
