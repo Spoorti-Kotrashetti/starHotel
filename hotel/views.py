@@ -106,22 +106,7 @@ class foodListing(View):
         # return render(request, 'foodListing.html', {'foodList':foodList})
         return render(request, 'foodListing.html', data)
 
-# def foodListing(request):
-#     foodList = None
-#     items = Item.get_all_categories()
 
-#     categoryID = request.GET['category']
-#     if categoryID:
-#         foodList = FoodListing.get_food_by_id(categoryID)
-#     else:
-#         foodList = FoodListing.get_all_food()
-
-#     data={}
-#     data['foodList'] = foodList
-#     data['items'] = items
-#     print("You are : ", request.session["username"])
-#     # return render(request, 'foodListing.html', {'foodList':foodList})
-#     return render(request, 'foodListing.html', data)
 
 def custLogout(request):
     auth.logout(request)
@@ -134,29 +119,6 @@ class Cart(View):
         print(foods) 
         return render(request, 'cart.html', {'foods': foods})
 
-
-
-
-
-
-# class Checkout(View):
-#     def post(self, request):
-        
-#         # customer = request.session.get('username')
-#         customer = request.session.get('id')
-#         cart = request.session.get('cart')
-#         product = FoodListing.get_food_list_by_id(list(cart.keys()))
-#         # p = Order(customer_confirm = True)
-#         # p.save()
-
-#         for prod in product:
-#             order = Order(customer=User(id=customer), product = prod, price = prod.food_price, quantity = cart.get(str(prod.id)), customer_confirm = True)
-#             print(order.place_order())
-#         print(customer, cart, product)
-#         print("------------------")
-#         request.session['cart'] = {}
-        
-#         return redirect('paymentRazor')
 
 
 

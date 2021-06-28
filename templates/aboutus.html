@@ -15,7 +15,7 @@
 
     <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap' %}" rel="stylesheet">
 
-    <title>About Hotel Star</title>
+    <title>About Grill House</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -43,7 +43,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/"><h2>Restaurant <em>Website</em></h2></a>
+          <a class="navbar-brand" href="/"><h2>Grill House <em>Cafe</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -55,7 +55,7 @@
                     </a>
                 </li> 
 
-                <!-- <li class="nav-item"><a class="nav-link" href="book-table.html">Book A Table</a></li> -->
+                
 
                 {%if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="menu">Menu</a></li>
@@ -68,7 +68,7 @@
                     
                     <div class="dropdown-menu">
                       <a class="dropdown-item active" href="#">About Us</a>
-                      <!-- <a class="dropdown-item" href="blog.html">Blog</a> -->
+                      
                       <a class="dropdown-item" href="chefs">Chefs</a>
                     </div>
                 </li>
@@ -80,7 +80,7 @@
                       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{user.username}}</a>
                       <div class="dropdown-menu">
                         <a class="dropdown-item" href="accounts/custLogout">Logout</a>
-                        <!-- <a class="dropdown-item" href="accounts/Cust">As Customer</a> -->
+                        
                       </div>
                     </li>
                 {% else %}
@@ -104,8 +104,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4>about us</h4>
-              <h2>our restaurant</h2>
+              <h4>ABOUT US</h4>
+              <h2>THE GRILL HOUSE CAFE</h2>
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Welcome to our Restaurant</h2>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">WELCOME TO THE GRILL HOUSE CAFE</h2>
             </div>
           </div>
           <div class="col-md-6">
@@ -127,14 +127,16 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="left-content">
-              <h4>WHO WE ARE.</h4>
-              <p>Around here ,we don't settle for anything less than food we're proud to serve.And we don't just clock in.we're the restaurant company that lives life unboxed.<br><br>we're not the people who blend in pushing boundaries is part of our heritage but we never stop driving ourselves to deliver dishes,fast every time and we want you enjoying it.</p>
+            <div class="left-content" >
+              <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">WHO AND WHAT WE ARE ABOUT...</h4>
+              <p>Grill House Cafe is among the best grilled food cafe in Mysuru . <br>If you are looking for a different dining experience, come in today and taste some of the most delicious grilled  plates in town.  <br>Try our salads  and grilled pizzas They are simply the best you can find in San Diego. Our friendly staff is awaiting here to greet you. <br>Ask for details about our menu.
+
+                Fresh ingredients and tasty foods at locals favorite The Grill House Cafe. <br>If you are craving some grilled tender and juicy kabobs, basmati rice cooked to perfection, make a reservation and come in today.</p>
               <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                <li><a href="https://www.facebook.com/gsssietwofficial/?ti=as"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://mobile.twitter.com/gsssietw?lang=en"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/gsss-institute-of-engg-and-tech-for-women"><i class="fa fa-linkedin"></i></a></li>
+                
               </ul>
             </div>
           </div>
@@ -143,23 +145,7 @@
     </div>
 
     
-    <div class="team-members">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>WHAT WE'RE ABOUT.</h2>
-            </div>
-
-            <h5>WHAT WE'RE ABOUT.</h5>
-
-            <p>At our restaurant we don't just make recipies.We make people happy.Our restaurant was built on the belief that every dishes should be special and we carry that belief into everything we do.<br><br>We create food we're proud to serve and deliver it fast,with a smile.With more than than 55 years of experience under our belts,we understand how to best serve our customers through tried and true service principles.</p>
-
-            <p>Paying tribute to the people ,land and culture we hightlights our nations's flavours and ingredients through seosonal tasting menus.<br><br>Enjoy our dazzling dishes and make the most of your eating background with us!!!!</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <footer>
       <div class="container">

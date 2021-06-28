@@ -10,14 +10,14 @@
       <div class="owl-banner owl-carousel">
         <div class="banner-item-01" style="background-image: url( '/static/images/abc8.jpeg' )">
           <div class="text-content">
-            <h4 style="color: black;">Welcome to Star Hotel!!</h4>
-            <h2 style="color: black;">18 years to master. Yours to savor</h2>
+            <h4 style="color: #f33f3f;">WELCOME TO THE GRILL HOUSE CAFE</h4>
+            <h2 style="color: white;">Healthy, Fresh, Fire Grill!!</h2>
           </div>
         </div>
         <div class="banner-item-02" style="background-image: url( '/static/images/abc10.jpeg' )">
           <div class="text-content">
             <h4 style="color: white;">Power Hungry</h4>
-            <h2>All-new catering menu featuring a build your own buffet</h2>
+            <h2>All-new catering menu featuring a 'Build your own buffet'</h2>
           </div>
         </div>
         <div class="banner-item-03" style="background-image: url( '/static/images/abc9.jpeg' )">
@@ -35,14 +35,14 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Events</h2>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Events</h2>
             </div>
           </div>
           
           {% for evt in evnts %}
           <div class="col-md-4">
             <div class="product-item">
-              <a href="#"><img src="{{evt.event_img.url}}" alt=""></a>
+              <img src="{{evt.event_img.url}}" alt="">
               <div class="down-content">
                 <h4>{{evt.event_name}}</h4>
 
@@ -60,18 +60,14 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>About Us</h2>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">About Us</h2>
             </div>
           </div>
           <div class="col-md-6">
             <div class="left-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, esse consequatur alias repellat in excepturi inventore ad asperiores tempora ipsa. Accusantium tenetur voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-              </ul>
+              <p>Grill House Cafe is among the best grilled food cafe in belgaum . <br>If you are looking for a different dining experience, come in today and taste some of the most delicious grilled  plates in town.  <br>Try our salads  and grilled pizzas They are simply the best you can find in San Diego. Our friendly staff is awaiting here to greet you. <br>Ask for details about our menu.
+
+                Fresh ingredients and tasty foods at locals favorite The Grill House Cafe. <br>If you are craving some grilled tender and juicy kabobs, basmati rice cooked to perfection, make a reservation and come in today.</p>
               <a href="aboutus" class="filled-button">Read More</a>
             </div>
           </div>
@@ -84,60 +80,14 @@
       </div>
     </div>
 
-    <div class="services" style="background-image: url(images/other-image-fullscren-1-1920x900.jpg);" >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Latest blog posts</h2>
-
-              <!-- <a href="blog.html">read more <i class="fa fa-angle-right"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="{% static 'images/blog-1-370x270.jpg' %}" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="{% static 'images/blog-2-370x270.jpg' %}" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit<h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="{% static 'images/blog-3-370x270.jpg' %}" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4>Aperiam modi voluptatum fuga officiis cumque</h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="happy-clients">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Happy Clients</h2>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Happy Clients</h2>
 
               <a href="chefs">read more <i class="fa fa-angle-right"></i></a>
             </div>
@@ -150,7 +100,7 @@
                 </div>
                 <div class="down-content">
                   <h4>Jessy</h4>
-                  <p class="n-m"><em>"When the guest arrives, give him an experience that's ahead of what he anticipates. What I'm hoping is that folks come away from [our hotels] having expected something, and come away thinking 'wow, so much better than what we expected to have."</em></p>
+                  <p class="n-m"><em>"Eat, drink, visit."</em></p>
                 </div>
               </div>
               
@@ -190,7 +140,7 @@
                 </div>
                 <div class="down-content">
                   <h4>Jane Smith</h4>
-                  <p class="n-m"><em>"Eat, Drink, Visit."</em></p>
+                  <p class="n-m"><em>"When the guest arrives, they give him an experience that's ahead of what he anticipates."</em></p>
                 </div>
               </div>
               
@@ -217,8 +167,8 @@
             <div class="inner-content">
               <div class="row">
                 <div class="col-md-8">
-                  <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
+                  <h4>Grill House Cafe is among the best grilled food cafe in belgaum .</h4>
+                  <p>If you are looking for a different dining experience, come in today and taste some of the most delicious grilled  plates in town.</p>
                 </div>
                 <div class="col-lg-4 col-md-6 text-right">
                   <a href="contactus" class="filled-button">Contact Us</a>
